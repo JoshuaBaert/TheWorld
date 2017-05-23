@@ -5,6 +5,14 @@ body {
   margin: 0;
 }
 
+a:link {
+    color: mediumpurple;
+}
+
+a:visited {
+    color: red;
+}
+
 label {
   font-weight: bold;
   display: block;
