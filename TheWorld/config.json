@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=true;multipleActiveResultSets=true;"
+  }
+}

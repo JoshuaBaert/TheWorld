@@ -14,6 +14,7 @@ namespace TheWorld.Controllers.Web
     public class AppController : Controller
     {
         private IMailService _mailService;
+        private WorldContext _context;
 
         public AppController (IMailService mailService, WorldContext context)
         {
@@ -24,8 +25,7 @@ namespace TheWorld.Controllers.Web
         public IActionResult Index ()
         {
             var data = _context.Trips.ToList ();
-
-            return View();
+            return View(data);
         }
 
         public IActionResult Contact()
