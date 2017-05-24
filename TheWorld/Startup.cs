@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TheWorld.Models;
 using TheWorld.Services;
 
 namespace TheWorld
@@ -18,6 +20,8 @@ namespace TheWorld
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMailService, DebugMailService> ();
+
+            services.AddDbContext<WorldContext> ();
 
             services.AddMvc ();
         }

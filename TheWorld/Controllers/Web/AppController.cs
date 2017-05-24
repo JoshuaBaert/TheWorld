@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
 
@@ -14,13 +15,16 @@ namespace TheWorld.Controllers.Web
     {
         private IMailService _mailService;
 
-        public AppController (IMailService mailService)
+        public AppController (IMailService mailService, WorldContext context)
         {
             _mailService = mailService;
+            _context = context;
         }
 
         public IActionResult Index ()
         {
+            var data = _context.Trips.ToList ();
+
             return View();
         }
 
