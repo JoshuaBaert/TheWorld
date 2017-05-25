@@ -25,6 +25,7 @@ namespace TheWorld.Controllers.Web
         public IActionResult Index ()
         {
             var data = _context.Trips.ToList ();
+
             return View(data);
         }
 

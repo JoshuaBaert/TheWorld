@@ -53,17 +53,18 @@ namespace TheWorld
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc (config =>
+            /*app.UseMvc (config =>
             {
                 config.MapRoute (
                     name: "Default",
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "App", action = "Index" }
                 );
-            });
+            });*/
 
         }
     }
