@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace TheWorld.Controllers.Web
 {
@@ -16,7 +17,10 @@ namespace TheWorld.Controllers.Web
         private IMailService _mailService;
         private IWorldRepository _repository;
 
-        public AppController (IMailService mailService, WorldContext context, IWorldRepository repository)
+        public AppController (IMailService mailService, 
+            WorldContext context, 
+            IWorldRepository repository,
+            ILogger<AppController> logger)
         {
             _mailService = mailService;
             _repository = repository;

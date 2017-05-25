@@ -56,10 +56,14 @@ namespace TheWorld
             ILoggerFactory factory,
             WorldContextSeedData seeder)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment ())
             {
-                app.UseDeveloperExceptionPage();
-                factory.AddDebug ();
+                app.UseDeveloperExceptionPage ();
+                factory.AddDebug (LogLevel.Information);
+            }
+            else
+            {
+                factory.AddDebug (LogLevel.Error);
             }
 
 //            app.UseDefaultFiles();
