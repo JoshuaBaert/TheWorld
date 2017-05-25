@@ -8,7 +8,7 @@ using TheWorld.Models;
 namespace TheWorld.Migrations
 {
     [DbContext(typeof(WorldContext))]
-    [Migration("20170524194848_InitialDatabase")]
+    [Migration("20170525164311_InitialDatabase")]
     partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace TheWorld.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("ArrivalDate");
+                    b.Property<DateTime>("Arrival");
 
                     b.Property<double>("Latitude");
 

@@ -21,7 +21,7 @@ namespace TheWorld.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("ArrivalDate");
+                    b.Property<DateTime>("Arrival");
 
                     b.Property<double>("Latitude");
 
