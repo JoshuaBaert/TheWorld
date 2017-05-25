@@ -14,17 +14,17 @@ namespace TheWorld.Controllers.Web
     public class AppController : Controller
     {
         private IMailService _mailService;
-        private WorldContext _context;
+        private IWorldRepository _repository;
 
-        public AppController (IMailService mailService, WorldContext context)
+        public AppController (IMailService mailService, WorldContext context, IWorldRepository repository)
         {
             _mailService = mailService;
-            _context = context;
+            _repository = repository;
         }
 
         public IActionResult Index ()
         {
-            var data = _context.Trips.ToList ();
+            var data = _repository.GetAllTrips ();
 
             return View(data);
         }

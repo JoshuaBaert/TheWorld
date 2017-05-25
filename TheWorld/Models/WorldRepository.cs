@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheWorld.Models
 {
-    public class WorldRepository
+    public class WorldRepository : IWorldRepository
     {
         private WorldContext _context;
 
