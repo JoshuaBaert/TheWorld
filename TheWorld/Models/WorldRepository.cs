@@ -19,5 +19,15 @@ namespace TheWorld.Models
         {
             return _context.Trips.ToList ();
         }
+
+        public void AddTrip (Trip trip)
+        {
+            _context.Add(trip);
+        }
+
+        public async Task<bool> SaveChangesAsync ()
+        {
+            return (await _context.SaveChangesAsync ()) > 0;
+        }
     }
 }

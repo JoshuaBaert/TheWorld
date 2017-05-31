@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Update;
 using TheWorld.Models;
 using TheWorld.ViewModels;
 
@@ -23,20 +24,27 @@ namespace TheWorld.Controllers.Api
         [HttpGet("")]
         public IActionResult Get ()
         {
-            return Ok(_repository.GetAllTrips());
+            var results = _repository.GetAllTrips ();
+
+            return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
         }
 
         [HttpPost("")]
-        public IActionResult Post ([FromBody]TripViewModel TheTrip)
+        public async Task<IActionResult> Post([FromBody]TripViewModel TheTrip)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return BadRequest ("Bad Data");
+
+            var newTrip = Mapper.Map<Trip> (TheTrip);
+            _repository.AddTrip(newTrip);
+
+            if (await _repository.SaveChangesAsync ())
             {
-                var newTrip = Mapper.Map<Trip> (TheTrip);
-
-                return Created($"api/trips/{TheTrip.Name}", Mapper.Map<TripViewModel>(newTrip));
+                return Created ($"api/trips/{TheTrip.Name}", Mapper.Map<TripViewModel> (newTrip));
             }
-
-            return BadRequest ("Bad Data");
+            else
+            {
+                return BadRequest ("Failed to save changes to database.");
+            }
         }
     }
 }
