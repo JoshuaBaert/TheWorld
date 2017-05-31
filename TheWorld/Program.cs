@@ -17,6 +17,7 @@ namespace TheWorld
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
+                .UseUrls("http://localhost:5027")
                 .Build();
 
             host.Run();

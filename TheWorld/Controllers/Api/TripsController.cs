@@ -10,10 +10,23 @@ namespace TheWorld.Controllers.Api
 {
     public class TripsController : Controller
     {
-        [HttpGet("/api/trips")]
-        public JsonResult Get ()
+        private IWorldRepository _repository;
+
+        public TripsController (IWorldRepository repository)
         {
-            return Json (new Trip () {Name = "My Trip"});
+            _repository = repository;
+        }
+
+        [HttpGet("api/trips")]
+        public IActionResult Get ()
+        {
+            return Ok(_repository.GetAllTrips());
+        }
+
+        [HttpPost("api/trips")]
+        public IActionResult Post ()
+        {
+            return Ok (true);
         }
     }
 }
