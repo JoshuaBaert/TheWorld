@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using TheWorld.Models;
 using TheWorld.ViewModels;
@@ -30,7 +31,9 @@ namespace TheWorld.Controllers.Api
         {
             if (ModelState.IsValid)
             {
-                return Created($"api/trips/{TheTrip.Name}", TheTrip);
+                var newTrip = Mapper.Map<Trip> (TheTrip);
+
+                return Created($"api/trips/{TheTrip.Name}", Mapper.Map<TripViewModel>(newTrip));
             }
 
             return BadRequest ("Bad Data");
