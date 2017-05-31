@@ -10,6 +10,8 @@ using TheWorld.Services;
 using TheWorld.ViewModels;
 using Microsoft.Extensions.Logging;
 
+/* Adding a few comments with Jetbrains Shortcuts*/
+
 namespace TheWorld.Controllers.Web
 {
     public class AppController : Controller
